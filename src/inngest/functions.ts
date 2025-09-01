@@ -72,6 +72,7 @@ export const codeAgentFunction = inngest.createFunction(
 
         }, 
       }),
+
       createTool({
         name: "createOrUpdateFiles",
         description: "Create or update files in the sandbox",
@@ -94,8 +95,10 @@ export const codeAgentFunction = inngest.createFunction(
               for (const file of files){
                 await sandbox.files.write(file.path, file.content);
                 updatedFiles[file.path] = file.content;
-                return updatedFiles;
+                
             }
+              return updatedFiles;
+           
             }catch(e){
               return "Error: " + e;
 
@@ -108,6 +111,7 @@ export const codeAgentFunction = inngest.createFunction(
 
         }
       }),
+      
       createTool({
         name: "readFiles",
         description: "Read files from the sandbox",
@@ -129,9 +133,10 @@ export const codeAgentFunction = inngest.createFunction(
 
             }
           })
-        }
+        }, 
       })
       ],
+
       lifecycle:{
         onResponse: async ({result, network}) => {
           const lastAssistantMessageText = 
@@ -178,6 +183,7 @@ export const codeAgentFunction = inngest.createFunction(
       if (isError){
         return await prisma.message.create({
           data: {
+            projectId: event.data.projectId,
             content: "Sorry, something went wrong. Please try again",
             role: "ASSISTANT",
             type: "ERROR",
@@ -187,6 +193,7 @@ export const codeAgentFunction = inngest.createFunction(
 
       return await prisma.message.create({
         data: {
+          projectId: event.data.projectId,
           content: result.state.data.summary,
           role: "ASSISTANT",
           type: "RESULT",
