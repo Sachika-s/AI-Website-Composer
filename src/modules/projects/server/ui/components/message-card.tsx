@@ -111,7 +111,7 @@ const AssistantMessage = ({
 
 
         </div>
-        <div className="ppl-8.5 flex flex-col gap-y-4" >
+        <div className="pl-8.5 flex flex-col gap-y-4" >
             <span>{content}</span>
             {fragment && type==="RESULT"}
             <FragmentCard 
