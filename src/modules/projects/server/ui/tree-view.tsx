@@ -64,7 +64,7 @@ interface TreeProps{
 
 const Tree = ({ item, selectedValue, onSelect, parentPath}: TreeProps) => {
     const [name, ...items] = Array.isArray(item) ? item: [item];
-    const currentPath = parentPath? `${parentPath}/name` : name; 
+    const currentPath = parentPath? `${parentPath}/${name}` : name; 
 
     if (!items.length){
         const isSelected = selectedValue === currentPath;
