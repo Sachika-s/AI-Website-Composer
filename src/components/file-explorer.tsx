@@ -30,6 +30,8 @@ function getLanguageFromExtension(filename: string): string {
     return extension || "text";
 };
 
+
+
 interface FileBreadcrumbProps {
     filePath: string;
 }
