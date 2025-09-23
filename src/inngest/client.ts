@@ -1,3 +1,7 @@
 import {Inngest} from "inngest";
 
-export const inngest = new Inngest({id: "bloom-project"});
+export const inngest = new Inngest({
+    id: "bloom-project",
+
+
+});

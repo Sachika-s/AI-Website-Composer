@@ -14,9 +14,7 @@ import { ProjectHeader } from "../components/project-header";
 import { FragmentWeb } from "../components/fragment-web";
 import { Tabs, TabsContent, TabsList, TabsTrigger} from "@/components/ui/tabs";
 import { EyeIcon, CodeIcon } from "lucide-react";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { CrownIcon } from "lucide-react";
+
 import { FileExplorer } from "@/components/file-explorer";
 
 
@@ -71,13 +69,7 @@ export const ProjectView= ({projectId}: Props) => {
                             <CodeIcon /><span>Code</span>
                         </TabsTrigger>
                         </TabsList> 
-                        <div className="ml-auto flex items-center gap-x-2">
-                        < Button asChild size="sm" variant="tertiary">
-                            <Link href="/pricing">
-                                <CrownIcon /> UPGRADE
-                            </Link>
-                        </Button>
-                        </div>
+                    
                         </div>
                         <TabsContent value="preview">
                             {!!activeFragment && <FragmentWeb data={activeFragment}/>}
